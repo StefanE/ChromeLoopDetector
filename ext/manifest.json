@@ -1,0 +1,36 @@
+{
+  "manifest_version": 2,
+
+  "name": "Surf Loop Detector",
+  "description": "This extension detects when you are entering a surf cycle.",
+  "version": "0.1",
+
+  "permissions": [
+    "notifications",
+    "webNavigation"
+  ],
+
+  "icons": { "256": "loopWarning.png" },
+
+  "content_scripts": [
+    {
+      //"matches": ["http://*/*","https://*/*"],
+      "matches": [ "*://*.dk/*",
+      "*://*.ekstrabladet.dk/*",
+      "*://*.bt.dk/*",
+      "*://*.jp.dk/*",
+      "*://*.politiken.dk/*",
+      "*://*.tv2.dk/*",
+      "*://*.dr.dk/*",
+      "*://*.twitter.com/*"],
+      //"exclude_matches" : ["*://*.google/*"],
+      "js": ["pageInjection.js"]
+    }
+  ],
+  
+  "background": {
+    "scripts": ["loopDetector.js"],
+    "persistent": false
+  }
+
+}
